@@ -106,11 +106,11 @@ impl Blockchain {
         self.pending_transactions.push(transaction);
     }
     
-    pub fn mine_pending_transactions(&mut self, mining_reward_address: String) {
+    pub fn mine_pending_transactions(&mut self, mining_reward_address: &str) {
         // Add mining reward transaction
         self.add_transaction(
             String::from("BLOCKCHAIN"),
-            mining_reward_address.clone(),
+            mining_reward_address.to_string().clone(),
             self.mining_reward,
         );
         
@@ -175,6 +175,24 @@ impl Blockchain {
             .duration_since(UNIX_EPOCH)
             .expect("Time went backwards")
             .as_secs()
+    }
+
+    pub fn save_to_disk(&self, path: &str) -> std::io::Result<()> {
+        let serialized = serde_json::to_string(&self.chain)?;
+        std::fs::write(path, serialized)?;
+        Ok(())
+    }
+    
+    pub fn load_from_disk(path: &str, difficulty: usize, mining_reward: f32) -> std::io::Result<Self> {
+        let data = std::fs::read_to_string(path)?;
+        let chain: Vec<Block> = serde_json::from_str(&data)?;
+        
+        Ok(Blockchain {
+            chain,
+            pending_transactions: Vec::new(),
+            difficulty,
+            mining_reward,
+        })
     }
 }
 

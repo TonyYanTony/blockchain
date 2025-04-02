@@ -1,5 +1,11 @@
 # How to Use
+## For noobs
+```bash
+cargo build
+cargo run -- --interactive
+```
 
+## For advanced users
 - Start a node:
 ```bash
 cargo run -- --listen /ip4/0.0.0.0/tcp/8000
@@ -23,4 +29,14 @@ cargo run -- mine MinerAddress
 - Check balance:
 ```bash
 cargo run -- balance Alice
+```
+
+- Save:
+```bash
+cargo run -- save ~/blockchain.json
+```
+
+- Load:
+```bash
+cargo run -- load ~/blockchain.json
 ```
