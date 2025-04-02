@@ -25,3 +25,5 @@ rand = "0.8"
 
 # Explicit dependency to fix version conflict
 subtle = "2.4.1"
+
+rust-version = "1.85.0"
