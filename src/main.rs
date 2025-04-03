@@ -1,5 +1,6 @@
 mod blockchain;
 mod p2p;
+mod algo;
 
 use blockchain::{Blockchain, Transaction};
 use clap::{App, Arg, SubCommand};

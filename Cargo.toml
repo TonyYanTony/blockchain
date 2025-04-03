@@ -9,6 +9,9 @@ sha2 = "0.10.8"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
+# Encryption Algorithm dependencies
+lazy_static = "1.5.0"
+
 # P2P networking
 libp2p = { version = "0.40", features = ["tcp-tokio", "mdns", "floodsub", "noise", "mplex"] }
 tokio = { version = "1", features = ["full", "rt", "rt-multi-thread", "macros"] }
@@ -26,4 +29,4 @@ rand = "0.8"
 # Explicit dependency to fix version conflict
 subtle = "2.4.1"
 
-rust-version = "1.85.0"
+# rust-version = "1.85.0"
